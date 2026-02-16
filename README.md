@@ -1,0 +1,426 @@
+# Sistema de Reserva de Hotel 🏨
+
+**Status**: ✅ Documentação Completa com Arquitetura Proposta - Pronta para Desenvolvimento
+
+**Data**: 16 de fevereiro de 2026  
+**Versão**: 1.5  
+
+---
+
+## 📋 Visão Geral
+
+Sistema web para gerenciamento de reservas de um único hotel, desenvolvido com arquitetura modular em camadas, permitindo escalabilidade futura e fácil manutenção.
+
+**Domínio**: Um sistema de reserva para um único hotel com módulos de gestão de quartos, hóspedes, reservas e dashboard.
+
+---
+
+## 📁 Documentação Disponível
+
+Esta documentação está organizada em 9 documentos na pasta `/docs/REQUISITOS/`:
+
+### 1. ✅ [REQUISITOS_SISTEMA_HOTELEIRO.md](docs/REQUISITOS/REQUISITOS_SISTEMA_HOTELEIRO.md)
+Especificação inicial do sistema com requisitos funcionais básicos, módulos principais e regras de negócio introdutórias.
+
+**Conteúdo**:
+- Visão geral do sistema
+- Módulos principais (3)
+- 21 requisitos iniciais
+- Matriz de rastreabilidade
+
+---
+
+### 2. ✅ [ARQUITETURA_E_DESIGN.md](docs/REQUISITOS/ARQUITETURA_E_DESIGN.md)
+Diretrizes arquiteturais, design visual, componentes e estrutura técnica inicial.
+
+**Conteúdo**:
+- Arquitetura em 4 camadas (apresentação, lógica, dados, infraestrutura)
+- Paleta de cores: Verde primário `#00A86B`, Azul primário `#0066CC`
+- Componentes modernos e intuitivos
+- Responsividade para mobile, tablet e desktop
+- Estrutura de pastas recomendada
+
+---
+
+### 3. ✅ [MODELOS_DADOS.md](docs/REQUISITOS/MODELOS_DADOS.md)
+Definição de modelos de dados, schema SQL, índices e constraints.
+
+**Conteúdo**:
+- Diagrama ER das 4 tabelas principais
+- Scripts SQL completos (CREATE TABLE)
+- Índices para otimização
+- Relacionamentos (Foreign Keys)
+- Constraints de validação
+- Seed de dados de exemplo
+
+**Tabelas**:
+- `HOSPEDE`: id, nome, sobrenome, cpf (UNIQUE), email, data_criacao
+- `QUARTO`: id, numero (UNIQUE), capacidade, tipo, preco_diaria, amenidades, disponibilidade
+- `CAMA`: id, quarto_id (FK), tipo
+- `RESERVA`: id, quarto_id (FK), hospede_id (FK), data_entrada, data_saida, status, valor_total
+
+---
+
+### 4. ✅ [CASOS_USO_REGRAS_NEGOCIO.md](docs/REQUISITOS/CASOS_USO_REGRAS_NEGOCIO.md)
+Casos de uso iniciais e 24 regras de negócio (RN) que governam o sistema.
+
+**Conteúdo**:
+- 6 casos de uso iniciais (UC 1.1 a 1.6)
+- 24 regras de negócio (RN001-RN024) cobrindo:
+  - Disponibilidade de quartos
+  - Validações de datas
+  - Cálculo de preços
+  - Estados de reserva
+  - Políticas de cancelamento
+  - Regras de limpeza
+
+---
+
+### 5. ✅ [REQUISITOS_RF_RNF_MOSCOW.md](docs/REQUISITOS/REQUISITOS_RF_RNF_MOSCOW.md)
+Classificação completa de todos os requisitos usando MoSCoW (Must/Should/Could/Won't).
+
+**Conteúdo**:
+- **71 Requisitos Funcionais (RF)** classificados em 4 prioridades
+  - 21 Must Have
+  - 20 Should Have
+  - 20 Could Have
+  - 10 Won't Have
+
+- **62 Requisitos Não-Funcionais (RNF)** classificados em 4 prioridades
+  - 15 Must Have (Performance, Segurança, Disponibilidade)
+  - 15 Should Have (UX aprimorada, integrações)
+  - 16 Could Have (futuro)
+  - 16 Won't Have
+
+---
+
+### 6. ✅ [HISTORIAS_USUARIO.md](docs/REQUISITOS/HISTORIAS_USUARIO.md)
+18 histórias de usuário em formato padrão com critérios de aceitação em Gherkin.
+
+**Conteúdo**:
+- 18 User Stories (US-001 a US-018)
+- 89 story points distribuídos
+- 85+ critérios de aceitação em formato Given-When-Then
+- Prioridades: 10 críticas (48 pt), 6 altas (28 pt), 2 baixas (13 pt)
+
+**Módulos**:
+- 6 US de Gestão de Quartos
+- 4 US de Gestão de Hóspedes
+- 6 US de Gestão de Reservas
+- 2 US de Dashboard/Relatórios
+
+---
+
+### 7. ✅ [CASOS_USO_PRINCIPAIS.md](docs/REQUISITOS/CASOS_USO_PRINCIPAIS.md) **NOVO**
+9 casos de uso formais com pré-condições, pós-condições, fluxo principal e fluxos alternativos.
+
+**Conteúdo**:
+- CU-001: Cadastrar Novo Quarto
+- CU-002: Editar Informações Quarto
+- CU-003: Visualizar Disponibilidade
+- CU-004: Cadastrar Novo Hóspede
+- CU-005: Criar Reserva
+- CU-006: Modificar Reserva
+- CU-007: Cancelar Reserva
+- CU-008: Executar Check-in
+- CU-009: Gerar Relatórios
+
+Cada use case inclui:
+- Atores envolvidos
+- Pré-condições
+- Pós-condições
+- Fluxo principal (13-15 passos)
+- 2-5 fluxos alternativos por CU
+
+---
+
+### 8. ✅ [RASTREABILIDADE_REQUISITOS_US.md](docs/REQUISITOS/RASTREABILIDADE_REQUISITOS_US.md) **NOVO**
+Matriz de rastreabilidade bidirecional conectando Requisitos ↔ Histórias ↔ Casos de Uso.
+
+**Conteúdo**:
+- RF→US mapeamento para 4 módulos
+- US→RF verificação de cobertura
+- Métricas de cobertura:
+  - RF Covered: 54/71 (76%)
+  - RNF Covered: 62/62 (100%)
+  - US com RF: 18/18 (100%)
+  - CU Mapped: 9/9 (100%)
+- Análise de lacunas
+- Checklist de validação
+
+---
+
+### 9. ✅ [ARQUITETURA_PROPOSTA.md](docs/REQUISITOS/ARQUITETURA_PROPOSTA.md) **NOVO**
+Análise de alternativas arquiteturais e recomendação de arquitetura com justificativas.
+
+**Conteúdo**:
+- **3 Alternativas avaliadas**:
+  1. Monolito Tradicional (simples mas rígido)
+  2. Microserviços Completos (escalável mas complexo)
+  3. ⭐ **Monolito Modular** (recomendado)
+
+- **Arquitetura em 4 Camadas**:
+  1. Camada de Apresentação (Frontend Web)
+  2. Camada de API REST
+  3. Camada de Lógica de Negócio (Services)
+  4. Camada de Acesso a Dados (Repositories)
+  5. Camada de Infraestrutura (BD, Cache, Logging)
+
+- **Justificativas**:
+  - ✅ Desempenho excelente (sem latência de rede)
+  - ✅ Escalabilidade boa para v1 (até 10k usuários)
+  - ✅ Manutenção simples com separação clara
+  - ✅ Deployment rápido (minutos)
+  - ✅ Adequado para time pequeno (3-5 devs)
+
+- **Stack Recomendado**:
+  - Frontend: React/Vue + Material UI
+  - Backend: Node.js + Express + TypeScript
+  - Database: PostgreSQL 14+
+  - Cache: Redis (v1.1)
+  - Deployment: AWS/Azure/GCP com Docker
+
+- **Roadmap Evolutivo**:
+  - v1.0: Monolito Modular (MVP)
+  - v1.1: + Cache Redis
+  - v2.0: + Workers assíncronos
+  - v3.0: Microserviços (se escala > 100k usuários/dia)
+
+- **Padrões Arquiteturais**: MVC, Repository, Service Locator, Middleware, DTO, Error Handling
+
+- **DRs (Architecture Decision Records)**: Documentadas decisões arquiteturais
+
+- **Performance**: Objetivos e otimizações (índices BD, paginação, compressão, lazy loading)
+
+- **Segurança**: JWT, RBAC, HTTPS, validação dupla (frontend+backend), SQL injection prevention
+
+- **Resiliência**: Load balancing, health checks, auto scaling, circuit breaker, disaster recovery
+
+- **Observabilidade**: Logs estruturados, métricas, tracing distribuído, dashboards críticos
+
+---
+
+## 📊 Indicadores de Qualidade
+
+### Cobertura de Requisitos
+- ✅ Requisitos Funcionais Cobertos: 54/71 (76%)
+- ✅ Requisitos Não-Funcionais Cobertos: 62/62 (100%)
+- ✅ Histórias com RF: 18/18 (100%)
+- ✅ Casos de Uso Mapeados: 9/9 (100%)
+
+### Distribuição de Story Points
+- Críticas (10): 48 pontos
+- Altas (6): 28 pontos
+- Baixas (2): 13 pontos
+- **Total**: 89 pontos (≈ 4-5 sprints de 2 semanas)
+
+### Requisitos Must-Have (v1.0 MVP)
+- ✅ 21 Requisitos Funcionais Must Have
+- ✅ 15 Requisitos Não-Funcionais Must Have
+- ✅ **36 Requisitos Críticos**: 100% mapeados e testáveis
+
+---
+
+## 🎯 Roadmap do Projeto
+
+### **v1.0** (MVP) - Mês 1
+- ✅ Gestão de quartos (CRUD)
+- ✅ Gestão de hóspedes (CRUD)
+- ✅ Criação de reservas (com validações)
+- ✅ Dashboard simples
+- **Usuários**: até 500 simultâneos
+- **Deploy**: Single instance (AWS t3.small)
+
+### **v1.1** (Otimizações) - Mês 2
+- 🔲 Cache Redis
+- 🔲 Relatórios avançados
+- 🔲 Email notifications
+- 🔲 CDN para assets
+- **Usuários**: até 5k simultâneos
+
+### **v2.0** (Escala)
+- 🔲 Workers assíncronos
+- 🔲 Message Queue
+- 🔲 Mobile app
+- 🔲 Integrações (payment, SMS)
+- **Usuários**: até 10k simultâneos
+
+### **v3.0** (Microserviços) - IF Needed
+- 🔲 Separar por domínio (Quartos, Hóspedes, Reservas, Relatórios)
+- 🔲 Kubernetes
+- 🔲 Service Mesh
+- **Usuários**: 100k+ simultâneos
+- **Condição**: Escala justificar complexidade
+
+---
+
+## 👥 Stakeholders
+
+### **Gerente de Hotel**
+- Gerencia quartos (adicionar, editar, remover)
+- Visualiza todos os dados
+- Gera relatórios
+- Acessa dashboard com indicadores
+
+### **Recepcionista**
+- Cria reservas (criar, editar, cancelar)
+- Faz check-in/check-out
+- Visualiza quartos disponíveis
+- Atende hóspedes
+
+### **Gerente de Limpeza**
+- Visualiza status de quartos
+- Marca quarto como limpo (futuro)
+
+---
+
+## 🏗️ Estrutura de Pastas Recomendada
+
+```
+projeto-hotel/
+├── backend/
+│   ├── src/
+│   │   ├── api/controllers, routes, validators
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── models/
+│   │   ├── database/migrations, seeds
+│   │   ├── config/
+│   │   ├── utils/
+│   │   └── app.ts
+│   ├── tests/unit, integration
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/api.ts
+│   │   ├── store/
+│   │   ├── styles/
+│   │   └── App.tsx
+│   ├── tests/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docs/
+│   ├── REQUISITOS/ (esta pasta)
+│   ├── API.md (OpenAPI/Swagger)
+│   └── DEPLOYMENT.md
+│
+└── .github/workflows/ (CI/CD)
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React 18+ ou Vue 3+
+- TypeScript
+- Material-UI ou Bootstrap 5
+- Vite ou Webpack
+- Jest + React Testing Library
+
+### Backend
+- Node.js 18+
+- Express 4.x
+- TypeScript
+- PostgreSQL 14+
+- Sequelize / TypeORM / Prisma
+- Jest para testes
+
+### DevOps
+- Docker
+- Docker Compose
+- GitHub Actions / GitLab CI
+- AWS (RDS, EC2, S3, CloudWatch)
+
+---
+
+## ✅ Checklist de Desenvolvimento
+
+### Pré-Projeto
+- [ ] Configurar repositório Git
+- [ ] Setup de ambiente (Node, BD local)
+- [ ] Configurar CI/CD
+- [ ] Padrões de código (ESLint, Prettier)
+
+### Sprint 1
+- [ ] Setup do projeto backend + frontend
+- [ ] Autenticação (JWT)
+- [ ] CU-004: Cadastrar Hóspede
+- [ ] CU-001: Cadastrar Quarto
+- [ ] Testes unitários (≥80% cobertura)
+
+### Sprint 2
+- [ ] CU-005: Criar Reserva (lógica principal)
+- [ ] CU-003: Visualizar Disponibilidade
+- [ ] Validações de regras de negócio
+- [ ] Testes de integração
+
+### Sprint 3
+- [ ] CU-006/CU-007: Editar/Cancelar Reserva
+- [ ] CU-008: Check-in/Check-out
+- [ ] Dashboard básico
+- [ ] Relatórios simples
+
+### Sprint 4+
+- [ ] CU-009: Relatórios avançados
+- [ ] Performance tuning
+- [ ] Deploy em staging
+- [ ] UAT e correções
+
+---
+
+## 📈 Métricas de Sucesso
+
+| Métrica | Target | Aceitável |
+|---------|--------|-----------|
+| Cobertura de Testes | ≥ 80% | ≥ 70% |
+| API Response Time | < 200ms | < 500ms |
+| Disponibilidade | ≥ 99.5% | ≥ 99% |
+| Time to Deploy | < 5 min | < 15 min |
+| Bugs em Produção | < 1/semana | < 3/semana |
+
+---
+
+## 📞 Contato & Suporte
+
+**Dúvidas sobre a arquitetura?**  
+Consulte [ARQUITETURA_PROPOSTA.md](docs/REQUISITOS/ARQUITETURA_PROPOSTA.md)
+
+**Dúvidas sobre requisitos?**  
+Consulte [REQUISITOS_RF_RNF_MOSCOW.md](docs/REQUISITOS/REQUISITOS_RF_RNF_MOSCOW.md)
+
+**Dúvidas sobre implementação?**  
+Consulte [CASOS_USO_PRINCIPAIS.md](docs/REQUISITOS/CASOS_USO_PRINCIPAIS.md)
+
+---
+
+## 📝 Histórico de Versões
+
+| Versão | Data | Mudanças |
+|--------|------|----------|
+| 1.0 | 2026-02-16 | Especificação inicial, requisitos básicos |
+| 1.1 | 2026-02-16 | RF/RNF com MoSCoW, 71 RF + 62 RNF |
+| 1.2 | 2026-02-16 | Histórias de usuário (18 US, 89 pt) |
+| 1.3 | 2026-02-16 | Casos de uso formais (9 CU com fluxos) |
+| 1.4 | 2026-02-16 | Matriz de rastreabilidade requisitos↔US↔CU |
+| 1.5 | 2026-02-16 | Arquitetura proposta com roadmap evolutivo |
+
+---
+
+## 📄 Licença
+
+Propriedade do projeto. Não distribuir sem permissão.
+
+---
+
+**Última atualização**: 16 de fevereiro de 2026  
+**Status**: ✅ Documentação Completa - Pronta para Sprint Planning  
+**Próximo passo**: Iniciar desenvolvimento com base em Sprint 1
