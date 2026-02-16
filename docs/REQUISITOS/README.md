@@ -63,6 +63,20 @@ Bem-vindo à documentação do **Sistema de Reserva de Hotel**. Este arquivo ser
 
 ---
 
+### 5. **[Requisitos Funcionais e Não-Funcionais (MoSCoW)](REQUISITOS_RF_RNF_MOSCOW.md)**
+   
+   Documento que classifica todos os requisitos pela metodologia MoSCoW:
+   - **Requisitos Funcionais**: 71 requisitos (21 M + 20 S + 20 C + 10 W)
+   - **Requisitos Não-Funcionais**: 62 requisitos (15 M + 20 S + 20 C + 7 W)
+   - **Priorização**: Must, Should, Could, Won't Have
+   - **Roadmap**: Sugestão de fases de desenvolvimento
+   - **Complexidade**: Classificação por nível de complexidade
+   - **Métricas**: Critérios de aceitação e metas
+
+   **Quando usar**: Para planejamento de sprints, gestão de escopo e priorização de features.
+
+---
+
 ## 🎨 Paleta de Cores Rápida
 
 | Uso | Cor | Hex |
@@ -157,6 +171,7 @@ Armazena as reservas realizadas
 - [x] Arquitetura e Design
 - [x] Modelos de Dados
 - [x] Casos de Uso e Regras de Negócio
+- [x] Requisitos RF/RNF com Priorização MoSCoW
 - [ ] Documentação de API (futuro)
 - [ ] Guia de Desenvolvimento (futuro)
 - [ ] Testes Unitários (futuro)
@@ -243,4 +258,5 @@ Para dúvidas sobre a documentação:
 ---
 
 **Gerado em**: 16 de fevereiro de 2026  
-**Status**: Documentação Completa - Pronta para Desenvolvimento
+**Status**: Documentação Completa com Priorização MoSCoW - Pronta para Desenvolvimento
+**Revisão**: v1.1 com adição de Requisitos RF/RNF
