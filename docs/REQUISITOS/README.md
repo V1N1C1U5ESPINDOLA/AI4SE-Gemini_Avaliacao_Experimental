@@ -53,13 +53,28 @@ Bem-vindo à documentação do **Sistema de Reserva de Hotel**. Este arquivo ser
 
 ### 4. **[Casos de Uso e Regras de Negócio](CASOS_USO_REGRAS_NEGOCIO.md)**
    
-   Documento que detalha os casos de uso e regras de negócio:
+   Documento que detalha os casos de uso iniciais e regras de negócio:
    - **Casos de Uso**: Fluxos principais do sistema (UC1.1 até UC1.6)
    - **Regras de Negócio**: RN001 até RN024 (cobrindo todos os módulos)
    - **Fluxos de Processos**: Sequências de operações
    - **Matriz de Rastreabilidade**: Ligação entre requisitos e casos de uso
 
    **Quando usar**: Para implementar lógica de negócio e entender os fluxos do sistema.
+
+---
+
+### 4.1. **[Casos de Uso Principais Formais](CASOS_USO_PRINCIPAIS.md)** ✨ **NOVO**
+   
+   Documento com especificação formal dos 9 casos de uso principais:
+   - **Atores**: Gerente de Hotel, Recepcionista, Gerente de Limpeza
+   - **Pré-condições e Pós-condições**: Claramente definidas
+   - **Fluxo Principal**: Caminho feliz detalhado passo-a-passo
+   - **Fluxos Alternativos**: Tratamento de exceções e erros
+   - **Dados Alterados**: Especificação de tabelas e operações
+   - **Regras Associadas**: Ligação com requisitos funcionais
+   - **Diagrama UML**: Visualização dos casos de uso
+
+   **Quando usar**: Para implementação, testes, validação de requisitos e documentação técnica.
 
 ---
 
@@ -89,6 +104,21 @@ Bem-vindo à documentação do **Sistema de Reserva de Hotel**. Este arquivo ser
    - **Mapeamento**: Ligação com requisitos funcionais
 
    **Quando usar**: Para planejamento de sprints, desenvolvimento e testes de aceitação.
+
+---
+
+### 7. **[Casos de Uso Principais Formais](CASOS_USO_PRINCIPAIS.md)** ✨ **NOVO**
+   
+   Documento com especificação formal dos 9 casos de uso principais:
+   - **Atores**: Gerente de Hotel, Recepcionista, Gerente de Limpeza
+   - **Pré-condições e Pós-condições**: Claramente definidas
+   - **Fluxo Principal**: Caminho feliz detalhado passo-a-passo
+   - **Fluxos Alternativos**: Tratamento de exceções e erros (20+ fluxos)
+   - **Dados Alterados**: Especificação de tabelas e operações
+   - **Regras Associadas**: Ligação com requisitos funcionais
+   - **Diagrama UML**: Visualização dos casos de uso
+
+   **Quando usar**: Para implementação, testes, validação de requisitos e documentação técnica.
 
 ---
 
@@ -172,6 +202,40 @@ Armazena as reservas realizadas
 
 ---
 
+## 🎪 Casos de Uso Principais - Resumo
+
+### Total: 9 Casos de Uso | 69 Story Points
+
+| ID | Caso de Uso | Atores | Fluxos | Prioridade |
+|----|-----------|--------|--------|-----------|
+| **CU-001** | Cadastrar Quarto | Gerente | Principal + 3 Alt. | 🔴 Crítica |
+| **CU-002** | Listar Quartos | Gerente, Recepcionista | Principal + 1 Alt. | 🔴 Crítica |
+| **CU-003** | Editar Quarto | Gerente | Principal + 2 Alt. | 🔴 Crítica |
+| **CU-004** | Cadastrar Hóspede | Recepcionista | Principal + 3 Alt. | 🔴 Crítica |
+| **CU-005** | Criar Reserva | Recepcionista | Principal + 4 Alt. | 🔴 Crítica |
+| **CU-006** | Editar Reserva | Recepcionista | Principal + 2 Alt. | 🔴 Crítica |
+| **CU-007** | Cancelar Reserva | Recepcionista, Gerente | Principal + 1 Alt. | 🟡 Alta |
+| **CU-008** | Alterar Disponibilidade | Gerente | Principal + 1 Alt. | 🔴 Crítica |
+| **CU-009** | Buscar Hóspede | Recepcionista, Gerente | Principal + 2 Alt. | 🟡 Alta |
+
+### Atores Envolvidos: 3
+- **Gerente de Hotel**: CU-001, CU-002, CU-003, CU-008
+- **Recepcionista**: CU-002, CU-004, CU-005, CU-006, CU-007, CU-009
+- **Gerente de Limpeza**: CU-008 (visualização)
+
+### Cada Caso de Uso Inclui:
+✅ Atores envolvidos  
+✅ Pré-condições e Pós-condições precisamente definidas  
+✅ Fluxo Principal detalhado passo-a-passo  
+✅ Fluxos Alternativos/Exceções (20+ fluxos alternativos)  
+✅ Dados alterados (INSERT, UPDATE, DELETE)  
+✅ Regras de negócio associadas  
+✅ Mapeamento para Requisitos Funcionais (RF)  
+
+---
+
+## 🎯 Principais Regras de Negócio
+
 | Categoria | Regra |
 |-----------|-------|
 | Quartos | Número único, tipos: Básico/Moderno/Luxo, capacidade ≥ 1 |
@@ -208,6 +272,7 @@ Armazena as reservas realizadas
 - [x] Casos de Uso e Regras de Negócio
 - [x] Requisitos RF/RNF com Priorização MoSCoW
 - [x] Histórias de Usuário com Critérios de Aceitação
+- [x] Casos de Uso Principais Formais
 - [ ] Documentação de API (futuro)
 - [ ] Guia de Desenvolvimento (futuro)
 - [ ] Testes Unitários (futuro)
@@ -294,5 +359,5 @@ Para dúvidas sobre a documentação:
 ---
 
 **Gerado em**: 16 de fevereiro de 2026  
-**Status**: ✅ Documentação Completa com Histórias de Usuário - Pronta para Sprint Planning  
-**Versão**: 1.2 - Adição de Histórias de Usuário em formato padrão
+**Status**: ✅ Documentação Completa com Casos de Uso - Pronta para Desenvolvimento  
+**Versão**: 1.3 - Adição de Casos de Uso Principais com Pré/Pós-condições
