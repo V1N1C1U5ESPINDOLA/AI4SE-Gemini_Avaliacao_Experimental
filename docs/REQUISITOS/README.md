@@ -122,6 +122,21 @@ Bem-vindo à documentação do **Sistema de Reserva de Hotel**. Este arquivo ser
 
 ---
 
+### 8. **[Rastreabilidade de Requisitos](RASTREABILIDADE_REQUISITOS_US.md)** ✨ **NOVO**
+   
+   Documento com matriz de rastreabilidade completa:
+   - **Mapeamento Bidirecional**: RF ↔ US ↔ CU
+   - **Cobertura de Requisitos**: 77% dos requisitos rastreados
+   - **Histórias Órfãs**: 0 (todas as histórias têm requisitos)
+   - **Requisitos Órfãos**: 0 (todos têm histórias ou justificativa)
+   - **Análise de Gaps**: Identificação de lacunas
+   - **Checklist de Validação**: Para desenvolvimento
+   - **Tabelas Cruzadas**: Requisitos × Histórias
+
+   **Quando usar**: Para garantir cobertura completa, validação e rastreabilidade durante desenvolvimento.
+
+---
+
 ## 🎨 Paleta de Cores Rápida
 
 | Uso | Cor | Hex |
@@ -223,6 +238,11 @@ Armazena as reservas realizadas
 - **Recepcionista**: CU-002, CU-004, CU-005, CU-006, CU-007, CU-009
 - **Gerente de Limpeza**: CU-008 (visualização)
 
+### Atores Envolvidos: 3
+- **Gerente de Hotel**: CU-001, CU-002, CU-003, CU-008
+- **Recepcionista**: CU-002, CU-004, CU-005, CU-006, CU-007, CU-009
+- **Gerente de Limpeza**: CU-008 (visualização)
+
 ### Cada Caso de Uso Inclui:
 ✅ Atores envolvidos  
 ✅ Pré-condições e Pós-condições precisamente definidas  
@@ -234,7 +254,38 @@ Armazena as reservas realizadas
 
 ---
 
-## 🎯 Principais Regras de Negócio
+## 🔗 Rastreabilidade - Visão Geral
+
+### Ligações Estabelecidas
+
+```
+Requisitos (71 RF + 62 RNF)
+    ↓
+Histórias de Usuário (18 US)
+    ↓
+Casos de Uso (9 CU)
+    ↓
+Critérios de Aceitação (85+ AC)
+    ↓
+Banco de Dados
+```
+
+### Cobertura de Rastreabilidade
+
+| Tipo | Total | Coberto | % |
+|------|-------|---------|-----|
+| **Requisitos Funcionais** | 71 | 54 | 76% |
+| **Requisitos Não-Funcionais** | 62 | 62 | 100% |
+| **Histórias de Usuário** | 18 | 18 | 100% |
+| **Casos de Uso** | 9 | 9 | 100% |
+
+✅ **Cobertura Geral**: 77%  
+✅ **Histórias Órfãs**: 0  
+✅ **Requisitos Críticos Descobertos**: 0  
+
+**Detalhes**: Veja [RASTREABILIDADE_REQUISITOS_US.md](RASTREABILIDADE_REQUISITOS_US.md)
+
+---
 
 | Categoria | Regra |
 |-----------|-------|
@@ -273,6 +324,7 @@ Armazena as reservas realizadas
 - [x] Requisitos RF/RNF com Priorização MoSCoW
 - [x] Histórias de Usuário com Critérios de Aceitação
 - [x] Casos de Uso Principais Formais
+- [x] Rastreabilidade de Requisitos ↔ Histórias
 - [ ] Documentação de API (futuro)
 - [ ] Guia de Desenvolvimento (futuro)
 - [ ] Testes Unitários (futuro)
@@ -359,5 +411,5 @@ Para dúvidas sobre a documentação:
 ---
 
 **Gerado em**: 16 de fevereiro de 2026  
-**Status**: ✅ Documentação Completa com Casos de Uso - Pronta para Desenvolvimento  
-**Versão**: 1.3 - Adição de Casos de Uso Principais com Pré/Pós-condições
+**Status**: ✅ Documentação Completa com Rastreabilidade - Pronta para Desenvolvimento  
+**Versão**: 1.4 - Adição de Matriz de Rastreabilidade Requisitos ↔ Histórias ↔ Casos de Uso
