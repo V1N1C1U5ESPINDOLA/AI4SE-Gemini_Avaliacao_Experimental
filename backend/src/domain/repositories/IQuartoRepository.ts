@@ -6,4 +6,5 @@ export interface IQuartoRepository {
   findByNumero(numero: number): Promise<Quarto | null>;
   findAll(): Promise<Quarto[]>;
   update(id: string, quarto: Quarto): Promise<Quarto>;
+  delete(id: string): Promise<void>;
 }

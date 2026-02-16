@@ -2,6 +2,8 @@ import { Reserva } from '../../domain/entities/Reserva';
 import { IReservaRepository } from '../../domain/repositories/IReservaRepository';
 import { IQuartoRepository } from '../../domain/repositories/IQuartoRepository';
 import { StatusDisponibilidade } from '../../domain/enums/Status';
+import { generateId } from '../../infrastructure/IdGenerator';
+import { NotFoundException, ConflictException, ValidationException } from '../../domain/exceptions/ApplicationException';
 
 export class ReservaService {
   constructor(
@@ -15,18 +17,20 @@ export class ReservaService {
    */
   async criarReserva(dados: { quartoId: string; hospedeId: string; entrada: Date; saida: Date }): Promise<Reserva> {
     const quarto = await this.quartoRepository.findById(dados.quartoId);
-    if (!quarto) throw new Error("Quarto não encontrado.");
+    if (!quarto) throw new NotFoundException('Quarto', dados.quartoId);
     
     // RN013: Validar se o quarto está livre
     if (quarto.status !== StatusDisponibilidade.LIVRE) {
-      throw new Error("Quarto não está disponível para reserva.");
+      throw new ConflictException('Quarto não está disponível para reserva.');
     }
+
+    if (!dados.entrada || !dados.saida) throw new ValidationException('Datas inválidas.');
 
     // Criação da entidade Reserva (contém lógica de cálculo de valor e validação de datas)
     const reserva = new Reserva(
-      crypto.randomUUID(),
+      generateId(),
       quarto,
-      dados.hospedeId as any, // Simplificado para o teste
+      (dados.hospedeId as unknown) as any, // manter compatibilidade com modelo simplificado
       dados.entrada,
       dados.saida
     );

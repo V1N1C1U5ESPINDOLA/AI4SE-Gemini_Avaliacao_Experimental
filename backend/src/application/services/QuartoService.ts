@@ -2,6 +2,8 @@ import { Quarto } from '../../domain/entities/Quarto';
 import { Cama } from '../../domain/entities/Cama';
 import { IQuartoRepository } from '../../domain/repositories/IQuartoRepository';
 import { CreateQuartoRequest, UpdateQuartoRequest, QuartoResponseDTO } from '../../domain/dtos/QuartoDTO';
+import { NotFoundException, ConflictException, ValidationException } from '../../domain/exceptions/ApplicationException';
+import { generateId } from '../../infrastructure/IdGenerator';
 
 /**
  * QuartoService: Orquestrador da aplicação.
@@ -11,12 +13,15 @@ export class QuartoService {
   constructor(private readonly repository: IQuartoRepository) {}
 
   public async cadastrar(dados: CreateQuartoRequest): Promise<void> {
+    // Validação de dados de entrada
+    if (!dados || typeof dados.numero !== 'number') throw new ValidationException('Dados de quarto inválidos.');
+
     // Validação de unicidade (Regra de Domínio)
     const existente = await this.repository.findByNumero(dados.numero);
-    if (existente) throw new Error("Quarto com este número já cadastrado.");
+    if (existente) throw new ConflictException("Quarto com este número já cadastrado.");
 
     const novoQuarto = new Quarto(
-      crypto.randomUUID(), // Utilizando Web Crypto API para IDs únicos
+      generateId(),
       dados.numero,
       dados.capacidade,
       dados.tipo,
@@ -26,7 +31,7 @@ export class QuartoService {
 
     // Mapeamento de camas recebidas no DTO para a Entidade
     dados.camas.forEach(tipo => {
-      novoQuarto.adicionarCama(new Cama(crypto.randomUUID(), tipo));
+      novoQuarto.adicionarCama(new Cama(generateId(), tipo));
     });
 
     await this.repository.save(novoQuarto);
@@ -34,7 +39,7 @@ export class QuartoService {
 
   public async editar(id: string, dados: UpdateQuartoRequest): Promise<void> {
     const quarto = await this.repository.findById(id);
-    if (!quarto) throw new Error("Quarto não encontrado.");
+    if (!quarto) throw new NotFoundException('Quarto', id);
 
     // Aplicando alterações via métodos da entidade (Preservando Invariantes)
     if (dados.precoPorHora) quarto.atualizarPreco(dados.precoPorHora);

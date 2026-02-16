@@ -1,5 +1,6 @@
 import { TipoQuarto, StatusDisponibilidade } from '../enums/Status';
 import { Cama } from './Cama';
+import { ValidationException, ForbiddenException } from '../exceptions/ApplicationException';
 
 /**
  * Entidade Quarto: Raiz do Agregado.
@@ -23,6 +24,7 @@ export class Quarto {
     },
     statusInicial: StatusDisponibilidade = StatusDisponibilidade.LIVRE
   ) {
+    this.validarDados();
     this._status = statusInicial;
   }
 
@@ -31,8 +33,15 @@ export class Quarto {
   get capacidade() { return this._capacidade; }
   get tipo() { return this._tipo; }
   get precoPorHora() { return this._precoPorHora; }
+  get precoDiaria() { return this._precoPorHora * 24; }
   get status() { return this._status; }
   get camas() { return [...this._camas]; } // Retorna cópia para evitar mutação externa (Clean Code)
+
+  private validarDados(): void {
+    if (!this._numero || this._numero <= 0) throw new ValidationException('Número do quarto deve ser maior que zero.');
+    if (!this._capacidade || this._capacidade <= 0) throw new ValidationException('Capacidade deve ser maior que zero.');
+    if (!this._precoPorHora || this._precoPorHora <= 0) throw new ValidationException('Preço por hora deve ser maior que zero.');
+  }
 
   /**
    * Encapsula a lógica de transição de status (State Pattern logic).
@@ -40,20 +49,20 @@ export class Quarto {
    */
   public alterarStatus(novoStatus: StatusDisponibilidade): void {
     if (this._status === StatusDisponibilidade.OCUPADO && novoStatus === StatusDisponibilidade.LIVRE) {
-      throw new Error("Um quarto ocupado deve passar por Limpeza antes de ser liberado.");
+      throw new ForbiddenException('Um quarto ocupado deve passar por Limpeza antes de ser liberado.');
     }
     this._status = novoStatus;
   }
 
   public atualizarPreco(novoPreco: number): void {
-    if (novoPreco <= 0) throw new Error("Preço deve ser maior que zero.");
+    if (novoPreco <= 0) throw new ValidationException('Preço deve ser maior que zero.');
     this._precoPorHora = novoPreco;
   }
 
   public adicionarCama(cama: Cama): void {
     // Regra: Não permitir mais camas que a capacidade suporta
     if (this._camas.length >= this._capacidade) {
-      throw new Error("Capacidade máxima de camas atingida para este quarto.");
+      throw new ValidationException('Capacidade máxima de camas atingida para este quarto.');
     }
     this._camas.push(cama);
   }
