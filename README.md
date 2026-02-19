@@ -47,6 +47,24 @@ Bem-vindo à documentação do **Sistema de Reserva de Hotel**. Este arquivo ser
    - **Padrões**: Repository, Strategy, State, Factory e Observer.
    - **Justificativa**: Por que cada padrão foi escolhido para o domínio hoteleiro.
 
+### 10. **[Plano de Projeto](PLANO_PROJETO.md)** ✨ **NOVO**
+   Calendário de 6 sprints com 237 story points distribuídos.
+   - **Timeline**: 13 semanas (19 fev - 13 mai 2026).
+   - **Distribuição**: 52 tarefas com esforço em SP/horas + responsáveis.
+   - **Milestones**: 4 Entregas principais com métricas de sucesso.
+
+### 11. **[Cronograma e Backlog](CRONOGRAMA_BACKLOG.md)** ✨ **NOVO**
+   Detalhe épico-story para cada sprint com critérios de aceitação.
+   - **Formato**: Histórias de Usuário completas (HU, AC, tarefas).
+   - **Épicos**: 5 domínios cobertos (Quartos, Hóspedes, Reservas, Auth, DevOps).
+   - **Gantt/Visualização**: Gráficos ASCII para gestão visual.
+
+### 12. **[RACI, Templates e Dashboard](RACI_TEMPLATES_DASHBOARD.md)** ✨ **NOVO**
+   Governança, templates de reunião e métricas de progresso.
+   - **RACI**: Atribuição de responsabilidades por tema (13×5 matriz).
+   - **Reuniões**: Daily, Planning, Review, Retrospective, Refinement.
+   - **Dashboards**: Burn-down, Velocity, Health Check, Pre-release.
+
 ---
 
 ## 🎨 Paleta de Cores Rápida
@@ -74,17 +92,56 @@ O sistema utiliza um **Monolito Modular** em 4 camadas, priorizando transações
 - [x] Casos de Uso (Simples e Formais)
 - [x] Histórias de Usuário (US)
 - [x] Matriz de Rastreabilidade
-- [x] **Padrões de Projeto (Design Patterns)**
+- [x] Padrões de Projeto (Design Patterns)
+- [x] **Planejamento de Projeto (6 Sprints, 237 SP)**
+- [x] **Cronograma e Backlog (HUs com AC)**
+- [x] **RACI, Templates e Dashboards**
 - [ ] Documentação de API (Swagger)
 - [ ] Guia de Instalação e Deploy
+
+## 🏗️ Fases de Desenvolvimento
+
+| Fase | Status | Descrição |
+|------|--------|-----------|
+| **1. Análise & Requisitos** | ✅ Concluído | Documentação completa, requisitos IEEE, casos de uso formais. |
+| **2. Design & Arquitetura** | ✅ Concluído | Backend DDD/Clean Arch, padrões de projeto, diagramas. |
+| **3. Auditoria & Refatoração** | ✅ Concluído | 10 problemas identificados e corrigidos; exceções customizadas; ID generator. |
+| **4. Planejamento de Execução** | ✅ Concluído | 6 sprints, 237 SP estimados, RACI, templates de reunião. |
+| **5. Desenvolvimento (Sprint 1-6)** | ⏳ Próxima | ~988 horas, code reviews, testes (70%+ cobertura). |
+| **6. QA & Deployment** | ⏳ Planejado | Testes integrados, staging, produção. |
 
 ---
 
 ## 🚀 Próximos Passos
 
-1. **Definição de API**: Criar o contrato de endpoints (Swagger/OpenAPI).
-2. **Boilerplate**: Iniciar a estrutura de pastas conforme `ARQUITETURA_E_DESIGN.md`.
-3. **Sprint 1**: Iniciar o desenvolvimento do módulo de Gestão de Quartos.
+### Sprint 1 (19 fev - 4 mar 2026)
+1. **Backend Repository**: Implementar `PostgresQuartoRepository` com migrações.
+2. **Backend Services**: Completar validações e testes unitários.
+3. **Frontend Setup**: Configurar Vite + React + ESLint com tipos strict.
+4. **DevOps**: Pipeline CI/CD básico (Build + Lint + Tests).
+
+### Fases Posteriores
+- **Sprint 2-3**: Frontend CRUD, testes integrados, Auth/JWT.
+- **Sprint 4-5**: API Gateway, cache Redis, otimizações de performance.
+- **Sprint 6**: Testes E2E, staging, go-live, documentação operacional.
+
+### Recursos
+- **Gestor**: Consultar [PLANO_PROJETO.md](PLANO_PROJETO.md) para cronograma completo (4 milestones).
+- **Dev Team**: Ver [CRONOGRAMA_BACKLOG.md](CRONOGRAMA_BACKLOG.md) para HUs e AC (story points por task).
+- **Scrum Master**: Usar [RACI_TEMPLATES_DASHBOARD.md](RACI_TEMPLATES_DASHBOARD.md) (reuniões, RACI, métricas).
+
+---
+
+## 📊 Resumo de Esforço
+
+| Métrica | Valor |
+|---------|-------|
+| **Story Points Totais** | 237 SP (6 sprints × 2 semanas) |
+| **Horas Estimadas** | ~988 horas (~150 h/uma semana) |
+| **Duração Total** | 13 semanas (19 fev - 13 mai 2026) |
+| **Cobertura de Testes** | Meta: ≥70% (tasks, handlers, repos) |
+| **Latência de API** | Alvo: <200ms (p99) |
+| **Disponibilidade** | Alvo: ≥99.5% (SLA) |
 
 ---
 
@@ -95,8 +152,9 @@ O sistema utiliza um **Monolito Modular** em 4 camadas, priorizando transações
 | 1.0 | 16/02/2026 | Documentação inicial. |
 | 1.4 | 16/02/2026 | Adição de Rastreabilidade e Casos de Uso Formais. |
 | 1.5 | 16/02/2026 | Inclusão de Padrões de Projeto (Design Patterns). |
+| **2.0** | **16/02/2026** | **Planejamento de Execução: 6 sprints, 237 SP, RACI, templates, dashboards.** |
 
 ---
 
-**Status**: ✅ Documentação Técnica Consolidada  
-**Pronto para**: Início do Desenvolvimento (Coding Phase)
+**Status**: ✅ Análise, Design e Planejamento Completos  
+**Pronto para**: Sprint 1 - Desenvolvimento Backend (Coding Phase)
