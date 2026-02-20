@@ -134,7 +134,6 @@ O sistema utiliza um **Monolito Modular** em 4 camadas, priorizando transações
 
 ## 📊 Resumo de Esforço
 
-| Métrica | Valor |
 |---------|-------|
 | **Story Points Totais** | 237 SP (6 sprints × 2 semanas) |
 | **Horas Estimadas** | ~988 horas (~150 h/uma semana) |
@@ -153,7 +152,33 @@ O sistema utiliza um **Monolito Modular** em 4 camadas, priorizando transações
 2. **Baixa Cobertura de Testes**
    - *Mitigação:* Meta mínima de 70% de cobertura; PRs só aprovados com testes.
 
-3. **Performance Insuficiente da API**
+## 🏅 Governança, KPIs e Qualidade
+
+### KPIs (Indicadores-Chave de Performance)
+
+- **Cobertura de Testes**: ≥70% (unitários, integrados, E2E)
+- **Latência da API**: <200ms (p99)
+- **Disponibilidade**: ≥99.5% (SLA)
+- **Lead Time de Entrega**: ≤7 dias por HU
+- **Taxa de Bugs em Produção**: <2% dos deploys
+- **Velocidade de Sprint**: ≥90% das tarefas planejadas entregues
+- **Tempo de Resposta a Incidentes**: <24h
+- **Satisfação do Cliente**: ≥8/10 (feedback sprint)
+
+### Critérios de Qualidade
+
+- **Código Limpo**: Sem warnings, sem duplicidade, nomes claros, SRP respeitado
+- **Documentação Completa**: README, API, diagramas, onboarding
+- **Testes Automatizados**: Todos os fluxos críticos cobertos
+- **Revisão de Código**: PRs aprovados por pelo menos 1 dev
+- **Deploy Automatizado**: CI/CD com rollback e staging
+- **Segurança**: Validação de inputs, autenticação JWT, logs de acesso
+- **Performance**: API otimizada, queries indexadas, cache implementado
+- **Usabilidade**: Frontend responsivo, UX testada, acessibilidade mínima AA
+- **Rastreabilidade**: Requisitos mapeados a HUs e testes
+- **Monitoramento**: Logs, métricas, alertas ativos
+
+---
    - *Mitigação:* Monitoramento de latência; uso de cache (Redis) e profiling em endpoints críticos.
 
 4. **Dependência de Bibliotecas Externas**
